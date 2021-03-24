@@ -1,0 +1,1 @@
+web: gunicorn craiglist_clone.wsgi

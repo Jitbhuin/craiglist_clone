@@ -7,10 +7,15 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="{% static "craiglist_app/style.css" %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-</head>
+<script>
+$(document).ready(function(){
+    $('select').formSelect();
+});
+</script>
 </head>
 <body>
 <nav>
@@ -55,10 +60,36 @@
 
     <form action="{% url 'new_search' %}" method="post">
         {% csrf_token %}
-        <input type="text" name="search" placeholder="search">
+         <div>
+                      <div class="input-field">
+                        <select name="location" required>
+                          <option value=""disabled selcted>Choose site nearest to you</option>
+                          <option value="ahmedabad">Ahmedabad</option>
+                          <option value="bangalore">Bangalore</option>
+                          <option value="bhubaneswar">Bhubaneswar</option>
+                          <option value="chandigarh">Chandigarh</option>
+                          <option value="chennai">Chennai</option>
+                          <option value="delhi">Delhi</option>
+                          <option value="goa">Goa</option>
+                          <option value="hyderabad">Hyderabad</option>
+                          <option value="indore">Indore</option>
+                          <option value="jaipur">Jaipur</option>
+                          <option value="kerala">Kerala</option>
+                          <option value="kolkata">Kolkata</option>
+                          <option value="lucknow">Lucknow</option>
+                          <option value="mumbai">Mumbai</option>
+                          <option value="pune">Pune</option>
+                          <option value="surat">Surat</option>
+                          
+                        </select>
+                      </div>
+         </div>
+          <div>
+        <input type="text" name="search" placeholder="search" required>
         <button class="btn waves-effect waves-light" type="submit" name="action">Search
             <i class="material-icons right">search</i>
         </button>
+    </div>
     </form>
 
     {% block content %}
@@ -66,6 +97,23 @@
     {% endblock content %}
 
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 </body>
 </html>
+<!-- <a href="https://ahmedabad.craigslist.org">ahmedabad</a></li>
+        <li><a href="https://bangalore.craigslist.org">bangalore</a></li>
+        <li><a href="https://bhubaneswar.craigslist.org">bhubaneswar</a></li>
+        <li><a href="https://chandigarh.craigslist.org">chandigarh</a></li>
+        <li><a href="https://chennai.craigslist.org">chennai (madras)</a></li>
+        <li><a href="https://delhi.craigslist.org">delhi</a></li>
+        <li><a href="https://goa.craigslist.org">goa</a></li>
+        <li><a href="https://hyderabad.craigslist.org">hyderabad</a></li>
+        <li><a href="https://indore.craigslist.org">indore</a></li>
+        <li><a href="https://jaipur.craigslist.org">jaipur</a></li>
+        <li><a href="https://kerala.craigslist.org">kerala</a></li>
+        <li><a href="https://kolkata.craigslist.org">kolkata (calcutta)</a></li>
+        <li><a href="https://lucknow.craigslist.org">lucknow</a></li>
+        <li><a href="https://mumbai.craigslist.org">mumbai</a></li>
+        <li><a href="https://pune.craigslist.org">pune</a></li>
+        <li><a href="https://surat.craigslist.org">surat surat</a></li> -->

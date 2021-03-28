@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from . import models
 from django.utils import timezone
-BASE_CRAIGLIST_URL = 'https://mumbai.craigslist.org/search/?query={}'
+BASE_CRAIGLIST_URL = 'https://{}.craigslist.org/search/?query={}'
 BASE_IMAGE_URL = 'https://images.craigslist.org/{}_300x300.jpg'
 
 
@@ -16,9 +16,12 @@ def home(request):
 
 def new_search(request):
     # return HttpResponse({'new search is working'})
+    # print(request.POST)
     search = request.POST.get('search')
-    final_url = BASE_CRAIGLIST_URL.format(quote_plus(search))
-    # print(final_url)
+    location =request.POST.get('location')
+    print(location)
+    final_url = BASE_CRAIGLIST_URL.format(location,quote_plus(search))
+    print(final_url)
     models.SearchModel.objects.create(search=search, create_time=timezone.now())
     response = requests.get(final_url)
     data = response.text
